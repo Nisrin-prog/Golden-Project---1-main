@@ -75,16 +75,15 @@ class Form2 {
       }
       
      this.submit.mousePressed(async()=>{
-       console.log("clicked")
-       console.log(this.qid)
-        var dbref = await db.collection('Answers').doc("this.qid");
-        console.log(dbref)
+       
+        var aid = this.qid.toString()
+        var dbref = await db.collection('Answers').doc(aid);
         dbref.get().then((doc) => {
-          if (doc.exists) {
-                this.answers = doc.data();
-            };
+            var answers = doc.data();
+            console.log(answers)
+            this.answers = answers
         })
-        })
+     })
       
       /*if(answers.hero === this.hero.val){
         flag = 1
